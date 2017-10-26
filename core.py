@@ -7,24 +7,26 @@ def mainfunction(source):
     print(user)
     try:
         if user == "cancel":
-            return True
+            return user
         elif user == "hello":
             print "verified"
-            return False
+            return user
         else:
             print "sorry i didn't understand"
-            return false
+            return user
     except Exception:
         # don't really do above, find exact error thrown maybe speech_recognition.UnknownValueError
         pass
         
 
 if __name__ == "__main__":
-    r = sr.Recognizer() # where is this being used? You're calling assigning the function but not doing anything with it
+    r = sr.Recognizer()
     with sr.Microphone() as source:
-        while mainfunction(source) != True:
-            print ('working')
-
+        while mainfunction(source) != 'hello':
+            if mainfunction(source) == 'hello':
+                print('helloooooo')
+            else:
+                print('nooooooo')
 
 
 
