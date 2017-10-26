@@ -8,15 +8,15 @@ def mainfunction(source):
     if user == "Hello":
         return True
     else:
-        print("I did not understand")
+        return False
 
 if __name__ == "__main__":
     r = sr.Recognizer()
     with sr.Microphone() as source:
         while 1:
             mainfunction(source)
-            if mainfunction == True:
-                print ("This is true")
+            while mainfunction(source) != True:
+                print ('worked')
 
 
 """
@@ -31,4 +31,20 @@ console.
 Another issue I am facing is that Google Speech throws an error when it picks up voice 
 that it does not recognise. I need to find a way to catch this and restart the function.
  
+"""
+
+"""
+
+Below is the error the program returns when it cannot recognise the word. I need to catch 
+this and then return the function seamlessly if possible... 
+
+Traceback (most recent call last):
+  File "core.py", line 18, in <module>
+    while mainfunction(source) != True:
+  File "core.py", line 6, in mainfunction
+    user = r.recognize_google(audio)
+  File "/Library/Python/2.7/site-packages/speech_recognition/__init__.py", line 780, in recognize_google
+    if not isinstance(actual_result, dict) or len(actual_result.get("alternative", [])) == 0: raise UnknownValueError()
+speech_recognition.UnknownValueError
+
 """
