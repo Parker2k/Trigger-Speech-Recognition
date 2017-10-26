@@ -18,11 +18,14 @@ def mainfunction(user):
 
 if __name__ == "__main__":
     r = sr.Recognizer()
-    with sr.Microphone() as source:
-        audio = r.listen(source)
-        user = r.recognize_google(audio)
-        while mainfunction(user) != True:
-            pass #this will keep looping until the true is returned
+    while manfunction(user) = False:
+        try:
+            with sr.Microphone() as source:
+                audio = r.listen(source)
+                user = r.recognize_google(audio)
+                mainfunction(user)
+        except speech_recognition.UnknownValueError:
+            pass
     
 
 
