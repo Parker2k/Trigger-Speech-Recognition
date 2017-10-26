@@ -1,38 +1,44 @@
 import pyaudio,os
 import speech_recognition as sr
 
-def mainfunction(user):
-        if user == "cancel":
-            return True
-        elif user == "hello":
+
+class recognition:
+    # you can set variables here by doing self.variable = "blah"
+    def init(self, user): # including self in the function enables you to call the variables within the class
+        if user == "hello":
             print "verified"
             #Start writing your code here, this is where it will be initiated
-
-            return False
+            return True
         else:
             print "sorry i didn't understand"
             return False
-    # except Exception:
-        # don't really do above, find exact error thrown maybe speech_recognition.UnknownValueError
-        # pass
-
+    
+    def mainFunction(self, user):
+        if user == "tell me the weather":
+            blah()
 
 
 if __name__ == "__main__":
     r = sr.Recognizer()
-    user = ""
-    while mainfunction(user) == False:
-        try:
-            with sr.Microphone() as source:
+    recog = recognition() # setting up your new class
+    # listen until I hear the pick up word
+    with sr.Microphone() as source:
+        user = ""
+        while recog.init(user) == False:
+            try:
                 audio = r.listen(source)
                 user = r.recognize_google(audio)
-                mainfunction(user)
-        except Exception:
-            pass
+                recog.init(user) #now the class has been set you can call functions such as recog.init etc 
+                # when you want a certain function under a class you can do recog.NewFunction()
+            except Exception:
+                pass
+            
+        #start main script
+        try:
+            audio = r.listen(source)
+            user = r.recognize_google(audio)
+            recog.mainFunction(user)
     
-
-
-
 """
 
 This script is meant to consistently listen for a trigger word. In this case 'hello'.
