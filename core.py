@@ -5,7 +5,7 @@ def mainfunction(source):
     audio = r.listen(source)
     user = r.recognize_google(audio)
     print(user)
-    if user == "Hello":
+    if user == "hello":
         return True
     else:
         return False
@@ -14,7 +14,8 @@ if __name__ == "__main__":
     r = sr.Recognizer()
     with sr.Microphone() as source:
         while mainfunction(source) != True:
-            print ('worked')
+            print ('working')
+
 
 
 
