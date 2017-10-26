@@ -13,10 +13,9 @@ def mainfunction(source):
 if __name__ == "__main__":
     r = sr.Recognizer()
     with sr.Microphone() as source:
-        while 1:
-            mainfunction(source)
-            while mainfunction(source) != True:
-                print ('worked')
+        while mainfunction(source) != True:
+            print ('worked')
+
 
 
 """
