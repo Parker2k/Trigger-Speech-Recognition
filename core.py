@@ -7,24 +7,27 @@ def mainfunction(user):
         elif user == "hello":
             print "verified"
             #Start writing your code here, this is where it will be initiated
+
             return False
         else:
             print "sorry i didn't understand"
             return False
-    except Exception:
+    # except Exception:
         # don't really do above, find exact error thrown maybe speech_recognition.UnknownValueError
-        pass
-        
+        # pass
+
+
 
 if __name__ == "__main__":
     r = sr.Recognizer()
-    while manfunction(user) = False:
+    user = ""
+    while mainfunction(user) == False:
         try:
             with sr.Microphone() as source:
                 audio = r.listen(source)
                 user = r.recognize_google(audio)
                 mainfunction(user)
-        except speech_recognition.UnknownValueError:
+        except Exception:
             pass
     
 
