@@ -5,9 +5,10 @@ def mainfunction(source):
     audio = r.listen(source)
     user = r.recognize_google(audio)
     print(user)
-    if user == "hello":
+    if user == "cancel":
         return True
-    else:
+    elif user == "hello":
+        print "verified"
         return False
 
 if __name__ == "__main__":
