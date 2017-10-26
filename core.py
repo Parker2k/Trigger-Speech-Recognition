@@ -15,7 +15,7 @@ class recognition:
     
     def mainFunction(self, user):
         if user == "tell me the weather":
-            blah()
+            print("boobs")
 
 
 if __name__ == "__main__":
@@ -38,6 +38,9 @@ if __name__ == "__main__":
             audio = r.listen(source)
             user = r.recognize_google(audio)
             recog.mainFunction(user)
+        except Exception:
+            pass
+
     
 """
 
