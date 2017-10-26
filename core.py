@@ -5,14 +5,22 @@ def mainfunction(source):
     audio = r.listen(source)
     user = r.recognize_google(audio)
     print(user)
-    if user == "cancel":
-        return True
-    elif user == "hello":
-        print "verified"
-        return False
+    try:
+        if user == "cancel":
+            return True
+        elif user == "hello":
+            print "verified"
+            return False
+        else:
+            print "sorry i didn't understand"
+            return false
+    except Exception:
+        # don't really do above, find exact error thrown maybe speech_recognition.UnknownValueError
+        pass
+        
 
 if __name__ == "__main__":
-    r = sr.Recognizer()
+    r = sr.Recognizer() # where is this being used? You're calling assigning the function but not doing anything with it
     with sr.Microphone() as source:
         while mainfunction(source) != True:
             print ('working')
