@@ -3,15 +3,17 @@ import speech_recognition as sr
 
 
 class recognition:
+    def __init__(self):
+        self.verified = False
     # you can set variables here by doing self.variable = "blah"
     def init(self, user): # including self in the function enables you to call the variables within the class
         if user == "hello":
             print "verified"
             #Start writing your code here, this is where it will be initiated
-            return True
+            self.verified = True
         else:
             print "sorry i didn't understand"
-            return False
+            pass
     
     def mainFunction(self, user):
         if user == "tell me the weather":
@@ -23,8 +25,7 @@ if __name__ == "__main__":
     recog = recognition() # setting up your new class
     # listen until I hear the pick up word
     with sr.Microphone() as source:
-        user = ""
-        while recog.init(user) == False:
+        while recog.verified == False:
             try:
                 audio = r.listen(source)
                 user = r.recognize_google(audio)
