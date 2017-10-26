@@ -1,19 +1,16 @@
 import pyaudio,os
 import speech_recognition as sr
 
-def mainfunction(source):
-    audio = r.listen(source)
-    user = r.recognize_google(audio)
-    print(user)
-    try:
+def mainfunction(user):
         if user == "cancel":
-            return user
+            return True
         elif user == "hello":
             print "verified"
-            return user
+            #Start writing your code here, this is where it will be initiated
+            return False
         else:
             print "sorry i didn't understand"
-            return user
+            return False
     except Exception:
         # don't really do above, find exact error thrown maybe speech_recognition.UnknownValueError
         pass
@@ -22,11 +19,11 @@ def mainfunction(source):
 if __name__ == "__main__":
     r = sr.Recognizer()
     with sr.Microphone() as source:
-        while mainfunction(source) != 'hello':
-            if mainfunction(source) == 'hello':
-                print('helloooooo')
-            else:
-                print('nooooooo')
+        audio = r.listen(source)
+        user = r.recognize_google(audio)
+        while mainfunction(user) != True:
+            pass #this will keep looping until the true is returned
+    
 
 
 
